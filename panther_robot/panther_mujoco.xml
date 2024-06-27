@@ -1,5 +1,5 @@
 <mujoco model="panther">
-  <compiler angle="radian" meshdir="/home/rona/vault/tesis/panther_robot/assets"/>
+  <compiler angle="radian" meshdir="assets"/>
   <asset>
     <mesh name="body" file="body.stl"/>
     <mesh name="body_collision" file="body_collision.stl"/>
@@ -10,9 +10,7 @@
     <mesh name="rr_wheel" file="rr_wheel.stl"/>
   </asset>
   <worldbody>
-    <geom name='ground' type='plane' size='10 10 0.1'/>
     <body name="panther" pos= '0 0 1'>
-      <freejoint/>
       <geom rgba='1 0 0 1' pos="0 0 0.1825" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="body"/>
       <geom rgba='0 0 0 0' pos="0 0 0.1825" type="mesh" mesh="body_collision"/>
       <body name="fl_wheel_link" pos="0.22 0.3485 0.1825">

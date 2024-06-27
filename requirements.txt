@@ -1,3 +1,4 @@
 mujoco
 mujoco_mjx
 brax
+dm_control

@@ -1,0 +1,197 @@
+<mujoco model="moma_robot">
+  <compiler angle="radian" meshdir="assets" autolimits="true"/>
+  <option integrator="RK4"/>
+  <default>
+    <default class="/"/>
+    <default class="panther/"/>
+    <default class="ur5e/">
+      <default class="ur5e/ur5e">
+        <material specular="0.5" shininess="0.25"/>
+        <joint axis="0 1 0" range="-6.2831900000000003 6.2831900000000003" armature="0.10000000000000001"/>
+        <site group="4" rgba="0.5 0.5 0.5 0.29999999999999999" size="0.001"/>
+        <general ctrlrange="-6.2831000000000001 6.2831000000000001" forcerange="-150 150" gaintype="fixed" biastype="affine" gainprm="2000" biasprm="0 -2000 -400"/>
+        <default class="ur5e/size3">
+          <default class="ur5e/size3_limited">
+            <joint range="-3.1415000000000002 3.1415000000000002"/>
+            <general ctrlrange="-3.1415000000000002 3.1415000000000002"/>
+          </default>
+        </default>
+        <default class="ur5e/size1">
+          <general forcerange="-28 28" gainprm="500" biasprm="0 -500 -100"/>
+        </default>
+        <default class="ur5e/visual">
+          <geom type="mesh" contype="0" conaffinity="0" group="2"/>
+        </default>
+        <default class="ur5e/collision">
+          <geom type="capsule" group="3"/>
+          <default class="ur5e/eef_collision">
+            <geom type="cylinder"/>
+          </default>
+        </default>
+      </default>
+    </default>
+  </default>
+  <asset>
+    <mesh name="panther/body" class="panther/" file="body.stl"/>
+    <mesh name="panther/body_collision" class="panther/" file="body_collision.stl"/>
+    <mesh name="panther/fl_wheel" class="panther/" file="fl_wheel.stl"/>
+    <mesh name="panther/wheel_collision" class="panther/" file="wheel_collision.stl"/>
+    <mesh name="panther/fr_wheel" class="panther/" file="fr_wheel.stl"/>
+    <mesh name="panther/rl_wheel" class="panther/" file="rl_wheel.stl"/>
+    <mesh name="panther/rr_wheel" class="panther/" file="rr_wheel.stl"/>
+    <material name="ur5e/black" class="ur5e/ur5e" rgba="0.033000000000000002 0.033000000000000002 0.033000000000000002 1"/>
+    <material name="ur5e/jointgray" class="ur5e/ur5e" rgba="0.27800000000000002 0.27800000000000002 0.27800000000000002 1"/>
+    <material name="ur5e/linkgray" class="ur5e/ur5e" rgba="0.81999999999999995 0.81999999999999995 0.81999999999999995 1"/>
+    <material name="ur5e/urblue" class="ur5e/ur5e" rgba="0.48999999999999999 0.67800000000000005 0.80000000000000004 1"/>
+    <mesh name="ur5e/base_0" class="ur5e/" file="base_0.obj"/>
+    <mesh name="ur5e/base_1" class="ur5e/" file="base_1.obj"/>
+    <mesh name="ur5e/shoulder_0" class="ur5e/" file="shoulder_0.obj"/>
+    <mesh name="ur5e/shoulder_1" class="ur5e/" file="shoulder_1.obj"/>
+    <mesh name="ur5e/shoulder_2" class="ur5e/" file="shoulder_2.obj"/>
+    <mesh name="ur5e/upperarm_0" class="ur5e/" file="upperarm_0.obj"/>
+    <mesh name="ur5e/upperarm_1" class="ur5e/" file="upperarm_1.obj"/>
+    <mesh name="ur5e/upperarm_2" class="ur5e/" file="upperarm_2.obj"/>
+    <mesh name="ur5e/upperarm_3" class="ur5e/" file="upperarm_3.obj"/>
+    <mesh name="ur5e/forearm_0" class="ur5e/" file="forearm_0.obj"/>
+    <mesh name="ur5e/forearm_1" class="ur5e/" file="forearm_1.obj"/>
+    <mesh name="ur5e/forearm_2" class="ur5e/" file="forearm_2.obj"/>
+    <mesh name="ur5e/forearm_3" class="ur5e/" file="forearm_3.obj"/>
+    <mesh name="ur5e/wrist1_0" class="ur5e/" file="wrist1_0.obj"/>
+    <mesh name="ur5e/wrist1_1" class="ur5e/" file="wrist1_1.obj"/>
+    <mesh name="ur5e/wrist1_2" class="ur5e/" file="wrist1_2.obj"/>
+    <mesh name="ur5e/wrist2_0" class="ur5e/" file="wrist2_0.obj"/>
+    <mesh name="ur5e/wrist2_1" class="ur5e/" file="wrist2_1.obj"/>
+    <mesh name="ur5e/wrist2_2" class="ur5e/" file="wrist2_2.obj"/>
+    <mesh name="ur5e/wrist3" class="ur5e/" file="wrist3.obj"/>
+  </asset>
+  <worldbody>
+    <site name="//unnamed_site_0" class="/" size="9.9999999999999995e-07 9.9999999999999995e-07 9.9999999999999995e-07" pos="0 0 0.5"/>
+    <body pos="0 0 0.5" name="panther/">
+      <body name="panther/panther" pos="0 0 1">
+        <geom name="panther//unnamed_geom_0" class="panther/" type="mesh" contype="0" conaffinity="0" group="1" rgba="1 0 0 1" density="0" pos="0 0 0.1825" mesh="panther/body"/>
+        <geom name="panther//unnamed_geom_1" class="panther/" type="mesh" rgba="0 0 0 0" pos="0 0 0.1825" mesh="panther/body_collision"/>
+        <body name="panther/fl_wheel_link" pos="0.22 0.34849999999999998 0.1825">
+          <inertial pos="0 0 0" quat="0.70710700000000004 0 0 0.70710700000000004" mass="3" diaginertia="0.034849999999999999 0.022509999999999999 0.022509999999999999"/>
+          <joint name="panther/fl_wheel_joint" class="panther/" pos="0 0 0" axis="0 1 0" actuatorfrcrange="-34.5 34.5" damping="0.01" frictionloss="0.01"/>
+          <geom name="panther//unnamed_geom_2" class="panther/" type="mesh" contype="0" conaffinity="0" group="1" rgba="0 0 0 1" density="0" mesh="panther/fl_wheel"/>
+          <geom name="panther//unnamed_geom_3" class="panther/" type="mesh" rgba="0 0 0 0" mesh="panther/wheel_collision"/>
+        </body>
+        <body name="panther/fr_wheel_link" pos="0.22 -0.34849999999999998 0.1825">
+          <inertial pos="0 0 0" quat="0.70710700000000004 0 0 0.70710700000000004" mass="3" diaginertia="0.034849999999999999 0.022509999999999999 0.022509999999999999"/>
+          <joint name="panther/fr_wheel_joint" class="panther/" pos="0 0 0" axis="0 1 0" actuatorfrcrange="-34.5 34.5" damping="0.01" frictionloss="0.01"/>
+          <geom name="panther//unnamed_geom_4" class="panther/" type="mesh" contype="0" conaffinity="0" group="1" rgba="0 0 0 1" density="0" mesh="panther/fr_wheel"/>
+          <geom name="panther//unnamed_geom_5" class="panther/" type="mesh" rgba="0 0 0 0" mesh="panther/wheel_collision"/>
+        </body>
+        <body name="panther/rl_wheel_link" pos="-0.22 0.34849999999999998 0.1825">
+          <inertial pos="0 0 0" quat="0.70710700000000004 0 0 0.70710700000000004" mass="3" diaginertia="0.034849999999999999 0.022509999999999999 0.022509999999999999"/>
+          <joint name="panther/rl_wheel_joint" class="panther/" pos="0 0 0" axis="0 1 0" actuatorfrcrange="-34.5 34.5" damping="0.01" frictionloss="0.01"/>
+          <geom name="panther//unnamed_geom_6" class="panther/" type="mesh" contype="0" conaffinity="0" group="1" rgba="0 0 0 1" density="0" mesh="panther/rl_wheel"/>
+          <geom name="panther//unnamed_geom_7" class="panther/" type="mesh" rgba="0 0 0 0" mesh="panther/wheel_collision"/>
+        </body>
+        <body name="panther/rr_wheel_link" pos="-0.22 -0.34849999999999998 0.1825">
+          <inertial pos="0 0 0" quat="0.70710700000000004 0 0 0.70710700000000004" mass="3" diaginertia="0.034849999999999999 0.022509999999999999 0.022509999999999999"/>
+          <joint name="panther/rr_wheel_joint" class="panther/" pos="0 0 0" axis="0 1 0" actuatorfrcrange="-34.5 34.5" damping="0.01" frictionloss="0.01"/>
+          <geom name="panther//unnamed_geom_8" class="panther/" type="mesh" contype="0" conaffinity="0" group="1" rgba="0 0 0 1" density="0" mesh="panther/rr_wheel"/>
+          <geom name="panther//unnamed_geom_9" class="panther/" type="mesh" rgba="0 0 0 0" mesh="panther/wheel_collision"/>
+        </body>
+      </body>
+    </body>
+    <body pos="0 0 0.5" name="ur5e/">
+      <body name="ur5e/base" childclass="ur5e/ur5e" quat="1 0 0 1">
+        <inertial pos="0 0 0" mass="4" diaginertia="0.0044333315599999999 0.0044333315599999999 0.0071999999999999998"/>
+        <geom name="ur5e//unnamed_geom_0" class="ur5e/visual" material="ur5e/black" mesh="ur5e/base_0"/>
+        <geom name="ur5e//unnamed_geom_1" class="ur5e/visual" material="ur5e/jointgray" mesh="ur5e/base_1"/>
+        <body name="ur5e/shoulder_link" pos="0 0 0.16300000000000001">
+          <inertial pos="0 0 0" mass="3.7000000000000002" diaginertia="0.010267500000000001 0.010267500000000001 0.0066600000000000001"/>
+          <joint name="ur5e/shoulder_pan_joint" class="ur5e/size3" axis="0 0 1"/>
+          <geom name="ur5e//unnamed_geom_2" class="ur5e/visual" material="ur5e/urblue" mesh="ur5e/shoulder_0"/>
+          <geom name="ur5e//unnamed_geom_3" class="ur5e/visual" material="ur5e/black" mesh="ur5e/shoulder_1"/>
+          <geom name="ur5e//unnamed_geom_4" class="ur5e/visual" material="ur5e/jointgray" mesh="ur5e/shoulder_2"/>
+          <geom name="ur5e//unnamed_geom_5" class="ur5e/collision" size="0.059999999999999998 0.059999999999999998" pos="0 0 -0.040000000000000001"/>
+          <body name="ur5e/upper_arm_link" pos="0 0.13800000000000001 0" quat="1 0 1 0">
+            <inertial pos="0 0 0.21249999999999999" mass="8.3930000000000007" diaginertia="0.13388600000000001 0.13388600000000001 0.0151074"/>
+            <joint name="ur5e/shoulder_lift_joint" class="ur5e/size3"/>
+            <geom name="ur5e//unnamed_geom_6" class="ur5e/visual" material="ur5e/linkgray" mesh="ur5e/upperarm_0"/>
+            <geom name="ur5e//unnamed_geom_7" class="ur5e/visual" material="ur5e/black" mesh="ur5e/upperarm_1"/>
+            <geom name="ur5e//unnamed_geom_8" class="ur5e/visual" material="ur5e/jointgray" mesh="ur5e/upperarm_2"/>
+            <geom name="ur5e//unnamed_geom_9" class="ur5e/visual" material="ur5e/urblue" mesh="ur5e/upperarm_3"/>
+            <geom name="ur5e//unnamed_geom_10" class="ur5e/collision" size="0.059999999999999998 0.059999999999999998" pos="0 -0.040000000000000001 0" quat="1 1 0 0"/>
+            <geom name="ur5e//unnamed_geom_11" class="ur5e/collision" size="0.050000000000000003 0.20000000000000001" pos="0 0 0.20000000000000001"/>
+            <body name="ur5e/forearm_link" pos="0 -0.13100000000000001 0.42499999999999999">
+              <inertial pos="0 0 0.19600000000000001" mass="2.2749999999999999" diaginertia="0.031179599999999998 0.031179599999999998 0.0040949999999999997"/>
+              <joint name="ur5e/elbow_joint" class="ur5e/size3_limited"/>
+              <geom name="ur5e//unnamed_geom_12" class="ur5e/visual" material="ur5e/urblue" mesh="ur5e/forearm_0"/>
+              <geom name="ur5e//unnamed_geom_13" class="ur5e/visual" material="ur5e/linkgray" mesh="ur5e/forearm_1"/>
+              <geom name="ur5e//unnamed_geom_14" class="ur5e/visual" material="ur5e/black" mesh="ur5e/forearm_2"/>
+              <geom name="ur5e//unnamed_geom_15" class="ur5e/visual" material="ur5e/jointgray" mesh="ur5e/forearm_3"/>
+              <geom name="ur5e//unnamed_geom_16" class="ur5e/collision" size="0.055 0.059999999999999998" pos="0 0.080000000000000002 0" quat="1 1 0 0"/>
+              <geom name="ur5e//unnamed_geom_17" class="ur5e/collision" size="0.037999999999999999 0.19" pos="0 0 0.20000000000000001"/>
+              <body name="ur5e/wrist_1_link" pos="0 0 0.39200000000000002" quat="1 0 1 0">
+                <inertial pos="0 0.127 0" mass="1.2190000000000001" diaginertia="0.0025598999999999999 0.0025598999999999999 0.0021941999999999999"/>
+                <joint name="ur5e/wrist_1_joint" class="ur5e/size1"/>
+                <geom name="ur5e//unnamed_geom_18" class="ur5e/visual" material="ur5e/black" mesh="ur5e/wrist1_0"/>
+                <geom name="ur5e//unnamed_geom_19" class="ur5e/visual" material="ur5e/urblue" mesh="ur5e/wrist1_1"/>
+                <geom name="ur5e//unnamed_geom_20" class="ur5e/visual" material="ur5e/jointgray" mesh="ur5e/wrist1_2"/>
+                <geom name="ur5e//unnamed_geom_21" class="ur5e/collision" size="0.040000000000000001 0.070000000000000007" pos="0 0.050000000000000003 0" quat="1 1 0 0"/>
+                <body name="ur5e/wrist_2_link" pos="0 0.127 0">
+                  <inertial pos="0 0 0.10000000000000001" mass="1.2190000000000001" diaginertia="0.0025598999999999999 0.0025598999999999999 0.0021941999999999999"/>
+                  <joint name="ur5e/wrist_2_joint" class="ur5e/size1" axis="0 0 1"/>
+                  <geom name="ur5e//unnamed_geom_22" class="ur5e/visual" material="ur5e/black" mesh="ur5e/wrist2_0"/>
+                  <geom name="ur5e//unnamed_geom_23" class="ur5e/visual" material="ur5e/urblue" mesh="ur5e/wrist2_1"/>
+                  <geom name="ur5e//unnamed_geom_24" class="ur5e/visual" material="ur5e/jointgray" mesh="ur5e/wrist2_2"/>
+                  <geom name="ur5e//unnamed_geom_25" class="ur5e/collision" size="0.040000000000000001 0.059999999999999998" pos="0 0 0.040000000000000001"/>
+                  <geom name="ur5e//unnamed_geom_26" class="ur5e/collision" size="0.040000000000000001 0.040000000000000001" pos="0 0.02 0.10000000000000001" quat="1 1 0 0"/>
+                  <body name="ur5e/wrist_3_link" pos="0 0 0.10000000000000001">
+                    <inertial pos="0 0.077168299999999995 0" quat="1 0 0 1" mass="0.18890000000000001" diaginertia="0.00013213400000000001 9.90863e-05 9.90863e-05"/>
+                    <joint name="ur5e/wrist_3_joint" class="ur5e/size1"/>
+                    <geom name="ur5e//unnamed_geom_27" class="ur5e/visual" material="ur5e/linkgray" mesh="ur5e/wrist3"/>
+                    <geom name="ur5e//unnamed_geom_28" class="ur5e/eef_collision" size="0.040000000000000001 0.02" pos="0 0.080000000000000002 0" quat="1 1 0 0"/>
+                    <site name="ur5e/attachment_site" pos="0 0.10000000000000001 0" quat="-1 1 0 0"/>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+  <tendon>
+    <fixed name="panther/linear" class="panther/">
+      <joint joint="panther/fl_wheel_joint" coef="1"/>
+      <joint joint="panther/fr_wheel_joint" coef="1"/>
+      <joint joint="panther/rl_wheel_joint" coef="1"/>
+      <joint joint="panther/rr_wheel_joint" coef="1"/>
+    </fixed>
+    <fixed name="panther/angular" class="panther/">
+      <joint joint="panther/fl_wheel_joint" coef="-1"/>
+      <joint joint="panther/fr_wheel_joint" coef="1"/>
+      <joint joint="panther/rl_wheel_joint" coef="-1"/>
+      <joint joint="panther/rr_wheel_joint" coef="1"/>
+    </fixed>
+  </tendon>
+  <actuator>
+    <motor name="panther/linear" class="panther/" ctrlrange="-2.5 2.5" tendon="panther/linear"/>
+    <motor name="panther/angular" class="panther/" ctrlrange="-10 10" tendon="panther/angular"/>
+    <general name="ur5e/shoulder_pan" class="ur5e/size3" joint="ur5e/shoulder_pan_joint"/>
+    <general name="ur5e/shoulder_lift" class="ur5e/size3" joint="ur5e/shoulder_lift_joint"/>
+    <general name="ur5e/elbow" class="ur5e/size3_limited" joint="ur5e/elbow_joint"/>
+    <general name="ur5e/wrist_1" class="ur5e/size1" joint="ur5e/wrist_1_joint"/>
+    <general name="ur5e/wrist_2" class="ur5e/size1" joint="ur5e/wrist_2_joint"/>
+    <general name="ur5e/wrist_3" class="ur5e/size1" joint="ur5e/wrist_3_joint"/>
+  </actuator>
+  <sensor>
+    <jointactuatorfrc name="panther/fr_wheel_joint_trq" joint="panther/fr_wheel_joint"/>
+    <jointactuatorfrc name="panther/fl_wheel_joint_trq" joint="panther/fl_wheel_joint"/>
+    <jointactuatorfrc name="panther/rr_wheel_joint_trq" joint="panther/rr_wheel_joint"/>
+    <jointactuatorfrc name="panther/rl_wheel_joint_trq" joint="panther/rl_wheel_joint"/>
+    <jointpos name="panther/fl_wheel_joint_pos" noise="0.01" joint="panther/fl_wheel_joint"/>
+    <jointpos name="panther/fr_wheel_joint_pos" noise="0.01" joint="panther/fr_wheel_joint"/>
+    <jointpos name="panther/rl_wheel_joint_pos" noise="0.01" joint="panther/rl_wheel_joint"/>
+    <jointpos name="panther/rr_wheel_joint_pos" noise="0.01" joint="panther/rr_wheel_joint"/>
+    <jointvel name="panther/fr_wheel_joint_vel" noise="0.01" joint="panther/fr_wheel_joint"/>
+    <jointvel name="panther/fl_wheel_joint_vel" noise="0.01" joint="panther/fl_wheel_joint"/>
+    <jointvel name="panther/rr_wheel_joint_vel" noise="0.01" joint="panther/rr_wheel_joint"/>
+    <jointvel name="panther/rl_wheel_joint_vel" noise="0.01" joint="panther/rl_wheel_joint"/>
+  </sensor>
+</mujoco>
